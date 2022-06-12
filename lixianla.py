@@ -64,7 +64,7 @@ def lixianla():
         driver.quit()
 
 if __name__ == '__main__':
-    print('lixianla: delay ' + delay_minutes + ' minutes')
+    print('lixianla: delay ' + str(delay_minutes) + ' minutes')
     time.sleep(delay_minutes * 60)
     for i in range(5):
         if (lixianla()): break

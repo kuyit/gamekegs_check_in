@@ -14,7 +14,7 @@ def already_checked_in(d):
     status = d.find_elements_by_xpath("//*[@class='icon-calendar-check-o']");
     return True if status != [] and status[0].text.find('已签到') else False
         
-@retry(stop_max_attempt_number=5)
+@retry(stop_max_attempt_number=1)
 def lixianla():
     # time.sleep(delay_minutes * 60)
     try:
@@ -30,7 +30,7 @@ def lixianla():
         driver.find_element_by_xpath("//*[@placeholder='图形验证码']").send_keys(valid)
 
         driver.find_element_by_xpath("//*[@id='submit']").click()
-        time.sleep(5)
+        time.sleep(10)
 
         if already_checked_in(driver):
             print('lixianla: already checked in')

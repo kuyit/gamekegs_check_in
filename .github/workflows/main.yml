@@ -36,9 +36,6 @@ jobs:
         run: pip install -r ./requirements.txt
       - name: 'Working'
         run: |
-          WAIT_SECONDS=$((60 * (1 + $RANDOM % 60)))
-          echo wait ${WAIT_SECONDS} seconds
-          sleep ${WAIT_SECONDS}
-          python ./lixianla.py ${{ secrets.LIXIANLA_USERNAME }} ${{ secrets.LIXIANLA_PASSWORD }} 0
-          python ./guyunsq.py ${{ secrets.GUYUNSQ_USERNAME }} ${{ secrets.GUYUNSQ_PASSWORD }} 0
+          python ./lixianla.py ${{ secrets.LIXIANLA_USERNAME }} ${{ secrets.LIXIANLA_PASSWORD }} $((1 + $RANDOM % 60))
+          python ./guyunsq.py ${{ secrets.GUYUNSQ_USERNAME }} ${{ secrets.GUYUNSQ_PASSWORD }}
 

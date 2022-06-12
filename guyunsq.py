@@ -2,7 +2,6 @@ from util import *
 
 username = sys.argv[1] # username
 password = sys.argv[2] # password
-delay_minutes = int(sys.argv[3]) # delay (m)
 img_path = os.getcwd() + "/1.png"
 
 def save_img(src):
@@ -41,5 +40,4 @@ def guyunsq():
         driver.quit()
 
 if __name__ == '__main__':
-    # time.sleep(delay_minutes * 60)
     guyunsq()

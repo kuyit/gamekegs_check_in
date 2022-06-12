@@ -51,9 +51,10 @@ def lixianla():
             if already_checked_in(driver):
                 print('lixianla: checked in successfully')
             else:
-                print('lixianla: error checking in')
+                print('lixianla: error checking in, ocr failed?')
+                return False
         else:
-            print('lixianla: error logging in? ocr failed?')
+            print('lixianla: error logging in, ocr failed?')
             return False
         
         return True
@@ -63,6 +64,7 @@ def lixianla():
         driver.quit()
 
 if __name__ == '__main__':
-    # time.sleep(delay_minutes * 60)
+    print('lixianla: delay ' + delay_minutes + ' minutes')
+    time.sleep(delay_minutes * 60)
     for i in range(5):
         if (lixianla()): break

@@ -12,7 +12,6 @@ def save_img(src):
   
 @retry(stop_max_attempt_number=1)
 def guyunsq():
-    # time.sleep(delay_minutes * 60)
     try:
         driver = get_web_driver()
 
@@ -42,4 +41,5 @@ def guyunsq():
         driver.quit()
 
 if __name__ == '__main__':
+    # time.sleep(delay_minutes * 60)
     guyunsq()

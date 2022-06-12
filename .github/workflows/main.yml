@@ -8,7 +8,7 @@ on:
   # pull_request:
   #   branches: [ main ]
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '0 17 * * *'
   # Allows you to run this workflow manually from the Actions tab
 #  workflow_dispatch:
 
@@ -44,3 +44,7 @@ jobs:
           # python ./moyupai.py  ${{ secrets.MOYUPAI_USERNAME }} ${{ secrets.MOYUPAI_PASSWORD }}
           # python ./v2ex.py  ${{ secrets.V2EX_USERNAME }} ${{ secrets.V2EX_PASSWORD }}
           # python ./91.py       ${{ secrets.WII_USERNAME}} ${{secrets.WII_PASSWORD}}
+          DELAY_MINUTES=$((1 + RANDOM % 120))
+          python ./lixianla.py ${{ secrets.LIXIANLA_USERNAME }} ${{ secrets.LIXIANLA_PASSWORD } $DELAY_MINUTES
+          python ./guyunsq.py ${{ secrets.GUYUNSQ_USERNAME }} ${{ secrets.GUYUNSQ_PASSWORD } $DELAY_MINUTES
+

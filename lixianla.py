@@ -52,7 +52,7 @@ def lixianla():
             else:
                 print('lixianla: error checking in')
         else:
-            print('error logging in?')
+            print('lixianla: error logging in?')
     except:
         raise
     finally:

@@ -27,10 +27,11 @@ def lixianla():
         driver.find_element_by_xpath("//*[@id='password']").send_keys(password)
 
         valid = Ocr_Captcha(driver, "//*[@class='vcode']", img_path)
+        print('lixianla: code: ' + valid)
         driver.find_element_by_xpath("//*[@placeholder='图形验证码']").send_keys(valid)
 
         driver.find_element_by_xpath("//*[@id='submit']").click()
-        time.sleep(10)
+        time.sleep(5)
 
         if already_checked_in(driver):
             print('lixianla: already checked in')
@@ -42,6 +43,7 @@ def lixianla():
             time.sleep(5)
 
             valid = Ocr_Captcha(driver, "//*[@class='vcode']", img_path)
+            print('lixianla: code: ' + valid)
             driver.find_element_by_xpath("//*[@placeholder='验证码']").send_keys(valid)
 
             driver.find_element_by_xpath("//*[@class='btn btn-block btn-primary axbutton']").click()

@@ -38,5 +38,5 @@ jobs:
         run: |
           DELAY_MINUTES=$((1 + RANDOM % 120))
           python ./lixianla.py ${{ secrets.LIXIANLA_USERNAME }} ${{ secrets.LIXIANLA_PASSWORD }} 0
-          #python ./guyunsq.py ${{ secrets.GUYUNSQ_USERNAME }} ${{ secrets.GUYUNSQ_PASSWORD }} 0
+          python ./guyunsq.py ${{ secrets.GUYUNSQ_USERNAME }} ${{ secrets.GUYUNSQ_PASSWORD }} 0
 

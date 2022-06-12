@@ -20,17 +20,25 @@ def lixianla():
     try:
         driver = get_web_driver()
 
+        print('1')
+
         # login
         driver.get("https://lixianla.com/user-login.htm")
 
         driver.find_element_by_xpath("//*[@id='email']").send_keys(username)
         driver.find_element_by_xpath("//*[@id='password']").send_keys(password)
 
+        print('2')
+
         valid = Ocr_Captcha(driver, "//*[@class='vcode']", img_path)
         driver.find_element_by_xpath("//*[@placeholder='图形验证码']").send_keys(valid)
 
+        print('3')
+
         driver.find_element_by_xpath("//*[@id='submit']").click()
         time.sleep(10)
+
+        print('4')
 
         if already_checked_in(driver):
             print('lixianla: already checked in')

@@ -3,8 +3,8 @@ name: selenium
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
+  # push:
+  #   branches: [ main ]
   # pull_request:
   #   branches: [ main ]
   schedule:
@@ -36,15 +36,7 @@ jobs:
         run: pip install -r ./requirements.txt
       - name: 'Working'
         run: |
-          # sudo cp -p ./chromedriver /usr/bin/
-          # chmod -R 777 /usr/bin/chromedriver
-          # python ./gamekegs.py ${{ secrets.GAMEKEGS_USERNAME }} ${{ secrets.GAMEKEGS_PASSWORD }}
-          # python ./muacloud.py ${{ secrets.MUACLOUD_USERNAME }} ${{ secrets.MUACLOUD_PASSWORD }}
-          # python ./juejin.py   ${{ secrets.JUEJIN_USERNAME }} ${{ secrets.JUEJIN_PASSWORD }}
-          # python ./moyupai.py  ${{ secrets.MOYUPAI_USERNAME }} ${{ secrets.MOYUPAI_PASSWORD }}
-          # python ./v2ex.py  ${{ secrets.V2EX_USERNAME }} ${{ secrets.V2EX_PASSWORD }}
-          # python ./91.py       ${{ secrets.WII_USERNAME}} ${{secrets.WII_PASSWORD}}
           DELAY_MINUTES=$((1 + RANDOM % 120))
-          python ./lixianla.py ${{ secrets.LIXIANLA_USERNAME }} ${{ secrets.LIXIANLA_PASSWORD }} $DELAY_MINUTES
-          python ./guyunsq.py ${{ secrets.GUYUNSQ_USERNAME }} ${{ secrets.GUYUNSQ_PASSWORD }} $DELAY_MINUTES
+          python ./lixianla.py ${{ secrets.LIXIANLA_USERNAME }} ${{ secrets.LIXIANLA_PASSWORD }} 0
+          #python ./guyunsq.py ${{ secrets.GUYUNSQ_USERNAME }} ${{ secrets.GUYUNSQ_PASSWORD }} 0
 

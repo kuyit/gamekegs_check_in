@@ -2,7 +2,7 @@ from util import *
 
 username = sys.argv[1] # username
 password = sys.argv[2] # password
-delay_minutes = sys.argv[3] # delay (m)
+delay_minutes = int(sys.argv[3]) # delay (m)
 img_path = os.getcwd() + "/1.png"
 
 def save_img(src):
@@ -12,7 +12,7 @@ def save_img(src):
   
 @retry(stop_max_attempt_number=1)
 def guyunsq():
-    time.sleep(delay_minutes * 60)
+    # time.sleep(delay_minutes * 60)
     try:
         driver = get_web_driver()
 

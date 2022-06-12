@@ -16,7 +16,6 @@ def already_checked_in(d):
         
 @retry(stop_max_attempt_number=1)
 def lixianla():
-    # time.sleep(delay_minutes * 60)
     try:
         driver = get_web_driver()
 
@@ -54,11 +53,15 @@ def lixianla():
             else:
                 print('lixianla: error checking in')
         else:
-            print('lixianla: error logging in?')
+            print('lixianla: error logging in? ocr failed?')
+            return False
+        
+        return True
     except:
         raise
     finally:
         driver.quit()
 
 if __name__ == '__main__':
+    # time.sleep(delay_minutes * 60)
     lixianla()

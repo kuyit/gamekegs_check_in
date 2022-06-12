@@ -45,6 +45,6 @@ jobs:
           # python ./v2ex.py  ${{ secrets.V2EX_USERNAME }} ${{ secrets.V2EX_PASSWORD }}
           # python ./91.py       ${{ secrets.WII_USERNAME}} ${{secrets.WII_PASSWORD}}
           DELAY_MINUTES=$((1 + RANDOM % 120))
-          python ./lixianla.py ${{ secrets.LIXIANLA_USERNAME }} ${{ secrets.LIXIANLA_PASSWORD } $DELAY_MINUTES
-          python ./guyunsq.py ${{ secrets.GUYUNSQ_USERNAME }} ${{ secrets.GUYUNSQ_PASSWORD } $DELAY_MINUTES
+          python ./lixianla.py ${{ secrets.LIXIANLA_USERNAME }} ${{ secrets.LIXIANLA_PASSWORD }} $DELAY_MINUTES
+          python ./guyunsq.py ${{ secrets.GUYUNSQ_USERNAME }} ${{ secrets.GUYUNSQ_PASSWORD }} $DELAY_MINUTES
 

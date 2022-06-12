@@ -64,5 +64,5 @@ def lixianla():
 
 if __name__ == '__main__':
     # time.sleep(delay_minutes * 60)
-    for i in range(3):
+    for i in range(5):
         if (lixianla()): break

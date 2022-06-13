@@ -11,8 +11,8 @@ def save_img(src):
         f.write(img.content)
 
 def already_checked_in(d):
-    status = d.find_elements_by_xpath("//*[@class='icon-calendar-check-o']");
-    return True if status != [] and status[0].text.find('已签到') else False
+    sg_signed = d.find_element_by_xpath("//*[@id='sg_signed']")
+    return True if sg_signed.is_displayed() else False
         
 @retry(stop_max_attempt_number=1)
 def lixianla():

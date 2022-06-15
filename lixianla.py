@@ -14,7 +14,7 @@ def already_checked_in(d):
     sg_signed = d.find_element_by_xpath("//*[@id='sg_signed']")
     return True if sg_signed.is_displayed() else False
         
-@retry(stop_max_attempt_number=1)
+@retry(stop_max_attempt_number=5)
 def lixianla():
     try:
         driver = get_web_driver()
@@ -30,7 +30,7 @@ def lixianla():
         driver.find_element_by_xpath("//*[@placeholder='图形验证码']").send_keys(valid)
 
         driver.find_element_by_xpath("//*[@id='submit']").click()
-        time.sleep(5)
+        time.sleep(10)
 
         if already_checked_in(driver):
             print('lixianla: already checked in')
@@ -39,14 +39,14 @@ def lixianla():
 
             # click check-in button
             driver.find_element_by_xpath("//*[@class='btn btn-primary ft']").click()
-            time.sleep(5)
+            time.sleep(10)
 
             valid = Ocr_Captcha(driver, "//*[@class='vcode']", img_path)
             print('lixianla: code: ' + valid)
             driver.find_element_by_xpath("//*[@placeholder='验证码']").send_keys(valid)
 
             driver.find_element_by_xpath("//*[@class='btn btn-block btn-primary axbutton']").click()
-            time.sleep(5)
+            time.sleep(10)
 
             if already_checked_in(driver):
                 print('lixianla: checked in successfully')

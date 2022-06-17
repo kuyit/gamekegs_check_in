@@ -10,8 +10,8 @@ def save_img(src):
     with open(img_path, "wb") as f:
         f.write(img.content)
 
-def already_checked_in(d):
-    sg_signed = d.find_element_by_xpath("//*[@id='sg_signed']")
+def already_checked_in(d, id):
+    sg_signed = d.find_element_by_xpath("//*[@id='" + id + "']")
     return True if sg_signed.is_displayed() else False
         
 @retry(stop_max_attempt_number=5)
@@ -32,7 +32,7 @@ def lixianla():
         driver.find_element_by_xpath("//*[@id='submit']").click()
         time.sleep(10)
 
-        if already_checked_in(driver):
+        if already_checked_in(driver, "sg_signed"):
             print('lixianla: already checked in')
         elif driver.find_elements_by_xpath("//*[@class='btn btn-primary ft']") != []:
             print('lixianla: start checking in')
@@ -48,7 +48,7 @@ def lixianla():
             driver.find_element_by_xpath("//*[@class='btn btn-block btn-primary axbutton']").click()
             time.sleep(10)
 
-            if already_checked_in(driver):
+            if already_checked_in(driver, "sign"):
                 print('lixianla: checked in successfully')
             else:
                 print('lixianla: error checking in, ocr failed?')

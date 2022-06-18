@@ -8,8 +8,7 @@ def save_img(src):
     img = requests.get(src)
     with open(img_path, "wb") as f:
         f.write(img.content)
-  
-@retry(stop_max_attempt_number=1)
+
 def guyunsq():
     try:
         driver = get_web_driver()
@@ -35,7 +34,7 @@ def guyunsq():
         else:
             print('guyunsq: already checked in')
     except:
-        raise
+        return
     finally:
         driver.quit()
 

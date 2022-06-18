@@ -13,8 +13,7 @@ def save_img(src):
 def already_checked_in(d, id):
     sg_signed = d.find_element_by_xpath("//*[@id='" + id + "']")
     return True if sg_signed.is_displayed() else False
-        
-@retry(stop_max_attempt_number=5)
+
 def lixianla():
     try:
         driver = get_web_driver()
@@ -56,15 +55,15 @@ def lixianla():
         else:
             print('lixianla: error logging in, ocr failed?')
             return False
-        
+
         return True
     except:
-        raise
+        return False
     finally:
         driver.quit()
 
 if __name__ == '__main__':
     print('lixianla: delay ' + str(delay_minutes) + ' minutes')
     time.sleep(delay_minutes * 60)
-    for i in range(5):
+    for i in range(10):
         if (lixianla()): break

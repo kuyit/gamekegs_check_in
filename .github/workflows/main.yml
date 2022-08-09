@@ -1,6 +1,6 @@
 name: selenium
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   # push:
@@ -36,6 +36,6 @@ jobs:
         run: pip install -r ./requirements.txt
       - name: 'Working'
         run: |
-          python ./lixianla.py ${{ secrets.LIXIANLA_USERNAME }} ${{ secrets.LIXIANLA_PASSWORD }} $((1 + $RANDOM % 10))
+          python ./lixianla.py ${{ secrets.LIXIANLA_USERNAME }} ${{ secrets.LIXIANLA_PASSWORD }} 0
           python ./guyunsq.py ${{ secrets.GUYUNSQ_USERNAME }} ${{ secrets.GUYUNSQ_PASSWORD }}
 

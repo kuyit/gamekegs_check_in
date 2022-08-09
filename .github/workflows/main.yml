@@ -38,13 +38,13 @@ jobs:
       - name: 'Set up Python'
         uses: actions/setup-python@v1
         with:
-           python-version: 3.6
+           python-version: 3.9
       - name: 'Install chromedriver'
         uses: nanasess/setup-chromedriver@v1
       - name: 'Install requirements'
         run: pip install -r ./requirements.txt
       - name: 'Working'
         run: |
-          python ./lixianla.py ${{ secrets.LIXIANLA_USERNAME }} ${{ secrets.LIXIANLA_PASSWORD }} ${{ secrets.HTTPS_PROXY }}
+          python ./lixianla.py ${{ secrets.LIXIANLA_USERNAME }} ${{ secrets.LIXIANLA_PASSWORD }}
           python ./guyunsq.py ${{ secrets.GUYUNSQ_USERNAME }} ${{ secrets.GUYUNSQ_PASSWORD }}
 

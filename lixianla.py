@@ -2,7 +2,7 @@ from util import *
 
 username = sys.argv[1] # username
 password = sys.argv[2] # password
-delay_minutes = int(sys.argv[3]) # delay (m)
+https_proxy = sys.argv[3] if len(sys.argv) > 3 else ""
 img_path = os.getcwd() + "/1.png"
 
 def save_img(src):
@@ -16,7 +16,7 @@ def already_checked_in(d, id):
 
 def lixianla():
     try:
-        driver = get_web_driver()
+        driver = get_web_driver(proxy = {'https': https_proxy} if not https_proxy else {})
 
         # login
         driver.get("https://lixianla.com/user-login.htm")
@@ -63,7 +63,5 @@ def lixianla():
         driver.quit()
 
 if __name__ == '__main__':
-    print('lixianla: delay ' + str(delay_minutes) + ' minutes')
-    time.sleep(delay_minutes * 60)
     for i in range(10):
         if (lixianla()): break

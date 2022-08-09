@@ -1,7 +1,7 @@
 from PIL import Image
 import cv2, numpy as np
 from retrying import retry
-from selenium import webdriver
+from seleniumwire import webdriver
 import os, sys, time, ddddocr, requests
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
@@ -18,11 +18,13 @@ chrome_options.add_argument('--ignore-certificate-errors-spki-list')
 chrome_options.add_argument('--ignore-ssl-errors')
 
 
-def get_web_driver():
+def get_web_driver(proxy = {}):
     chromedriver = "/usr/bin/chromedriver"
     os.environ["webdriver.chrome.driver"] = chromedriver
     driver = webdriver.Chrome(executable_path=chromedriver, chrome_options=chrome_options)
     driver.implicitly_wait(10) # 所有的操作都可以最长等待10s
+    if not proxy:
+        driver.proxy = proxy
     return driver
 
 # 一直等待某元素可见，默认超时10秒（此函数暂时没有使用）

@@ -2,6 +2,7 @@ from util import *
 
 username = sys.argv[1] # username
 password = sys.argv[2] # password
+https_proxy = sys.argv[3] if len(sys.argv) > 3 else ""
 img_path = os.getcwd() + "/1.png"
 
 def save_img(src):
@@ -11,7 +12,7 @@ def save_img(src):
 
 def guyunsq():
     try:
-        driver = get_web_driver()
+        driver = get_web_driver(proxy = {'https': https_proxy} if not https_proxy else {})
 
         # login
         driver.get("https://www.guyunsq.com/member.php?mod=logging&action=login")

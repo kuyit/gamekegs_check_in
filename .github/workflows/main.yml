@@ -28,6 +28,11 @@ jobs:
       - name: Check IP
         run: curl https://api.ipify.org
 
+      - name: Test Connectivity
+        run: |
+          ping -c 10 lixianla.com
+          ping -c 10 www.guyunsq.com
+
       # Runs a single command using the runners shell
       - name: 'Set up Python'
         uses: actions/setup-python@v1

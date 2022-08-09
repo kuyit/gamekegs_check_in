@@ -25,6 +25,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Check IP
+        run: curl https://api.ipify.org
+
       # Runs a single command using the runners shell
       - name: 'Set up Python'
         uses: actions/setup-python@v1

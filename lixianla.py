@@ -16,7 +16,7 @@ def already_checked_in(d, id):
 
 def lixianla():
     try:
-        driver = get_web_driver(proxy = {'https': https_proxy} if not https_proxy else {})
+        driver = get_web_driver(proxy = {'https': https_proxy} if https_proxy else {})
 
         # login
         driver.get("https://lixianla.com/user-login.htm")

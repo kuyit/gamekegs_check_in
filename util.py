@@ -23,7 +23,7 @@ def get_web_driver(proxy = {}):
     os.environ["webdriver.chrome.driver"] = chromedriver
     driver = webdriver.Chrome(executable_path=chromedriver, chrome_options=chrome_options)
     driver.implicitly_wait(10) # 所有的操作都可以最长等待10s
-    if not proxy:
+    if proxy:
         driver.proxy = proxy
     return driver
 

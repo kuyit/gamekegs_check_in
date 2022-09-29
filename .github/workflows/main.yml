@@ -39,12 +39,13 @@ jobs:
         uses: actions/setup-python@v1
         with:
            python-version: 3.9
-      #- name: 'Install chrome'
-      #  uses: browser-actions/setup-chrome@latest
-      #- name: 'Chrome version'
-      #  run: chrome --version
+      - name: 'Upgrade chrome'
+        run: |
+          sudo apt-get update
+          sudo apt-get --only-upgrade install google-chrome-stable
+          google-chrome --version
       - name: 'Install chromedriver'
-        uses: nanasess/setup-chromedriver@v1.0.8
+        uses: nanasess/setup-chromedriver@latest
       - name: 'Install requirements'
         run: pip install -r ./requirements.txt
       - name: 'Working'

@@ -41,8 +41,8 @@ jobs:
            python-version: 3.9
       #- name: 'Install chrome'
       #  uses: browser-actions/setup-chrome@latest
-      - name: 'Chrome version'
-        run: chrome --version
+      #- name: 'Chrome version'
+      #  run: chrome --version
       - name: 'Install chromedriver'
         uses: nanasess/setup-chromedriver@v1.0.8
       - name: 'Install requirements'

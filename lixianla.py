@@ -1,4 +1,5 @@
 from util import *
+from selenium.webdriver.common.by import By
 
 username = sys.argv[1] # username
 password = sys.argv[2] # password
@@ -11,7 +12,7 @@ def save_img(src):
         f.write(img.content)
 
 def already_checked_in(d, id):
-    sg_signed = d.find_element_by_xpath("//*[@id='" + id + "']")
+    sg_signed = d.find_element(By.XPATH, "//*[@id='" + id + "']")
     return True if sg_signed.is_displayed() else False
 
 def lixianla():
@@ -21,30 +22,30 @@ def lixianla():
         # login
         driver.get("https://lixianla.com/user-login.htm")
 
-        driver.find_element_by_xpath("//*[@id='email']").send_keys(username)
-        driver.find_element_by_xpath("//*[@id='password']").send_keys(password)
+        driver.find_element(By.XPATH, "//*[@id='email']").send_keys(username)
+        driver.find_element(By.XPATH, "//*[@id='password']").send_keys(password)
 
         valid = Ocr_Captcha(driver, "//*[@class='vcode']", img_path)
         print('lixianla: code: ' + valid)
-        driver.find_element_by_xpath("//*[@placeholder='图形验证码']").send_keys(valid)
+        driver.find_element(By.XPATH, "//*[@placeholder='图形验证码']").send_keys(valid)
 
-        driver.find_element_by_xpath("//*[@id='submit']").click()
+        driver.find_element(By.XPATH, "//*[@id='submit']").click()
         time.sleep(10)
 
         if already_checked_in(driver, "sg_signed"):
             print('lixianla: already checked in')
-        elif driver.find_elements_by_xpath("//*[@class='btn btn-primary ft']") != []:
+        elif driver.find_elements(By.XPATH, "//*[@class='btn btn-primary ft']") != []:
             print('lixianla: start checking in')
 
             # click check-in button
-            driver.find_element_by_xpath("//*[@class='btn btn-primary ft']").click()
+            driver.find_element(By.XPATH, "//*[@class='btn btn-primary ft']").click()
             time.sleep(10)
 
             valid = Ocr_Captcha(driver, "//*[@class='vcode']", img_path)
             print('lixianla: code: ' + valid)
-            driver.find_element_by_xpath("//*[@placeholder='验证码']").send_keys(valid)
+            driver.find_element(By.XPATH, "//*[@placeholder='验证码']").send_keys(valid)
 
-            driver.find_element_by_xpath("//*[@class='btn btn-block btn-primary axbutton']").click()
+            driver.find_element(By.XPATH, "//*[@class='btn btn-block btn-primary axbutton']").click()
             time.sleep(10)
 
             if already_checked_in(driver, "sign"):

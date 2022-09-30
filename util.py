@@ -19,13 +19,30 @@ chrome_options.add_argument('--ignore-ssl-errors')
 
 
 def get_web_driver(proxy = {}):
-    chromedriver = "/usr/bin/chromedriver"
+    platform = get_platform()
+    print('platform: ' + platform)
+    if platform == 'Linux':
+        chromedriver = "/usr/bin/chromedriver"
+    else:
+        chromedriver = "chromedriver.exe"
     os.environ["webdriver.chrome.driver"] = chromedriver
     driver = webdriver.Chrome(executable_path=chromedriver, chrome_options=chrome_options)
     driver.implicitly_wait(10) # 所有的操作都可以最长等待10s
     if proxy:
         driver.proxy = proxy
     return driver
+
+def get_platform():
+    platforms = {
+        'linux1' : 'Linux',
+        'linux2' : 'Linux',
+        'darwin' : 'OS X',
+        'win32' : 'Windows'
+    }
+    if sys.platform not in platforms:
+        return sys.platform
+
+    return platforms[sys.platform]
 
 # 一直等待某元素可见，默认超时10秒（此函数暂时没有使用）
 def is_visible(driver, locator, timeout=10):
@@ -36,7 +53,7 @@ def is_visible(driver, locator, timeout=10):
         return False
 
 def Ocr_Captcha(driver, locator, img_path): # 验证码识别
-    propertery = driver.find_element_by_xpath(locator)
+    propertery = driver.find_element(By.XPATH, locator)
     driver.save_screenshot(img_path)
     img = Image.open(img_path)
     location = propertery.location

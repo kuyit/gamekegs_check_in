@@ -1,4 +1,5 @@
 from util import *
+from selenium.webdriver.common.by import By
 
 username = sys.argv[1] # username
 password = sys.argv[2] # password
@@ -17,18 +18,19 @@ def guyunsq():
         # login
         driver.get("https://www.guyunsq.com/member.php?mod=logging&action=login")
 
-        driver.find_element_by_xpath("//*[starts-with(@id, 'username_')]").send_keys(username)
-        driver.find_element_by_xpath("//*[starts-with(@id, 'password3_')]").send_keys(password)
+        driver.find_element(By.XPATH, "//*[starts-with(@id, 'username_')]").send_keys(username)
+        driver.find_element(By.XPATH, "//*[starts-with(@id, 'password3_')]").send_keys(password)
 
-        driver.find_element_by_xpath("//*[@name='loginsubmit']").click()
+        driver.find_element(By.XPATH, "//*[@name='loginsubmit']").click()
         time.sleep(10)
 
-        if driver.find_elements_by_xpath("//*[@id='todaysay']") != []:
+
+        if driver.find_elements(By.XPATH, "//*[@id='todaysay']") != []:
             print('guyunsq: start checking in')
 
-            driver.find_element_by_xpath("//*[@id='kx']").click()
-            driver.find_element_by_xpath("//*[@id='todaysay']").send_keys('I am happy')
-            driver.find_element_by_xpath("//*[@class='pn pnc']").click()
+            driver.find_element(By.XPATH, "//*[@id='kx']").click()
+            driver.find_element(By.XPATH, "//*[@id='todaysay']").send_keys('I am happy')
+            driver.find_element(By.XPATH, "//*[@class='pn pnc']").click()
             time.sleep(10)
 
             print('guyunsq: checked in successfully')

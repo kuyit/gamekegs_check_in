@@ -21,7 +21,7 @@ chrome_options.add_argument('--ignore-ssl-errors')
 def get_web_driver(proxy = {}):
     platform = get_platform()
     print('platform: ' + platform)
-    if platform == 'Linux':
+    if platform.casefold() == 'linux':
         chromedriver = "/usr/bin/chromedriver"
     else:
         chromedriver = "chromedriver.exe"

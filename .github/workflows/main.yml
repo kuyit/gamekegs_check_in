@@ -28,11 +28,11 @@ jobs:
       - name: Check IP
         run: curl https://api.ipify.org
 
-      - name: Test Connectivity
-        continue-on-error: true
-        run: |
-          ping -c 10 lixianla.com
-          ping -c 10 www.guyunsq.com
+      #- name: Test Connectivity
+      #  continue-on-error: true
+      #  run: |
+      #    ping -c 10 lixianla.com
+      #    ping -c 10 www.guyunsq.com
 
       # Runs a single command using the runners shell
       - name: 'Set up Python'
@@ -50,6 +50,6 @@ jobs:
         run: pip install -r ./requirements.txt
       - name: 'Working'
         run: |
-          python ./lixianla.py ${{ secrets.LIXIANLA_USERNAME }} ${{ secrets.LIXIANLA_PASSWORD }} ${{ secrets.HTTPS_PROXY }}
+          python ./lixianla.py ${{ secrets.LIXIANLA_USERNAME }} ${{ secrets.LIXIANLA_PASSWORD }} #${{ secrets.HTTPS_PROXY }}
           python ./guyunsq.py ${{ secrets.GUYUNSQ_USERNAME }} ${{ secrets.GUYUNSQ_PASSWORD }}
 

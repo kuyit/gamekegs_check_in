@@ -4,6 +4,7 @@ from retrying import retry
 from seleniumwire import webdriver
 import os, sys, time, ddddocr, requests
 from selenium.webdriver import ActionChains
+from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -17,7 +18,6 @@ chrome_options.add_argument('--headless') # 浏览器不提供可视化页面. l
 chrome_options.add_argument('--ignore-certificate-errors-spki-list')
 chrome_options.add_argument('--ignore-ssl-errors')
 
-
 def get_web_driver(proxy = {}):
     platform = get_platform()
     print('platform: ' + platform)
@@ -26,7 +26,8 @@ def get_web_driver(proxy = {}):
     else:
         chromedriver = "chromedriver.exe"
     os.environ["webdriver.chrome.driver"] = chromedriver
-    driver = webdriver.Chrome(executable_path=chromedriver, chrome_options=chrome_options)
+    service = ChromeService(executable_path=chromedriver)
+    driver = webdriver.Chrome(service=service, chrome_options=chrome_options)
     driver.implicitly_wait(10) # 所有的操作都可以最长等待10s
     if proxy:
         driver.proxy = proxy

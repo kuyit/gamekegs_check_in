@@ -58,7 +58,8 @@ def lixianla():
             return False
 
         return True
-    except:
+    except Exception as e:
+        print("lixianla: got exception: ", e)
         return False
     finally:
         driver.quit()

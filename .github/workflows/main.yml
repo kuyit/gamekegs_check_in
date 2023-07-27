@@ -36,7 +36,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: 'Set up Python'
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
            python-version: '3.9'
       - name: 'Upgrade chrome'
@@ -45,7 +45,7 @@ jobs:
           sudo apt-get --only-upgrade install google-chrome-stable
           google-chrome --version
       - name: 'Install chromedriver'
-        uses: nanasess/setup-chromedriver@v1.0.8
+        uses: nanasess/setup-chromedriver@v2
       - name: 'Install requirements'
         run: pip install -r ./requirements.txt
       - name: 'Working'

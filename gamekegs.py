@@ -13,7 +13,7 @@ def save_img(src):
 def gamekegs():
     try:
         driver = get_web_driver()
-        driver.get("https://gamekegs.com/login")
+        driver.get("https://www.gkinto.com/login")
         driver.find_element_by_xpath("//*[@id='username']").send_keys(username)
         driver.find_element_by_xpath("//*[@id='password']").send_keys(password)
         driver.find_element_by_xpath("//*[@class='captcha-clk2']").click() # 点击验证码
